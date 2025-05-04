@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentUploadedImage = null;
     
     // API endpoint
-    const API_URL = 'http://localhost:5000/api/chat';
+    //const API_URL = 'http://localhost:5000/api/chat';
+    const API_URL = 'http://0.0.0.0:10000/api/chat';
+
     
     // Initialize textarea auto-resize
     userInput.addEventListener('input', function() {
