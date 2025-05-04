@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ecoPlanner - AI Danışman</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>ecoPlanner</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i><span>Anasayfa</span></a></li>
+                <li><a href="planner.html"><i class="fas fa-calendar-alt"></i><span>Planlayıcı</span></a></li>
+                <li><a href="learning.html"><i class="fas fa-graduation-cap"></i><span>Öğrenme Yolu</span></a></li>
+                <li class="active"><a href="chatbot.html"><i class="fas fa-robot"></i><span>AI Danışman</span></a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i><span>Hakkımızda</span></a></li>
+            </ul>
+            <div class="nav-profile">
+                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Profil Resmi">
+                <span class="user-name">Jane Smith</span>
+                <i class="fas fa-angle-down"></i>
+                <div class="profile-dropdown">
+                    <a href="#"><i class="fas fa-user"></i> Profilim</a>
+                    <a href="#"><i class="fas fa-cog"></i> Ayarlar</a>
+                    <a href="index.html"><i class="fas fa-sign-out-alt"></i> Çıkış</a>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Sürdürülebilirlik Danışmanı</h1>
+            </div>
+
+            <div class="chatbot-container">
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <h3><i class="fas fa-robot"></i> AI Danışman</h3>
+                        <button id="new-chat" class="new-chat-btn"><i class="fas fa-plus"></i> Yeni Sohbet</button>
+                    </div>
+                    
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Merhaba! Ben sürdürülebilirlik danışmanınızım. Bana hayatınız, alışkanlıklarınız veya ilgilendiğiniz herhangi bir konu hakkında bilgi verebilirsiniz. Size sürdürülebilir yaşam için kişiselleştirilmiş öneriler sunabilirim. Ayrıca görsel yükleyerek de analiz yaptırabilirsiniz.</p>
+                            </div>
+                        </div>
+                        <!-- Messages will be added here dynamically -->
+                    </div>
+                    
+                    <div id="upload-preview" class="upload-preview"></div>
+                    
+                    <div class="chat-input">
+                        <form id="chat-form">
+                            <div class="input-group">
+                                <textarea id="user-input" placeholder="Mesajınızı yazın..." rows="1"></textarea>
+                                <div class="input-buttons">
+                                    <label for="image-upload" class="upload-btn" title="Görsel Yükle">
+                                        <i class="fas fa-image"></i>
+                                    </label>
+                                    <input type="file" id="image-upload" accept="image/*" class="file-input" />
+                                    <button type="submit" id="send-button" title="Gönder">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ecoPlanner Hakkında</h3>
+                    <p>Sürdürülebilir yaşam için kişisel rehberiniz, her gün çevre dostu seçimler yapmanıza yardımcı olur.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Linkler</h3>
+                    <ul>
+                        <li><a href="about.html">Hakkımızda</a></li>
+                        <li><a href="#">Yardım & Destek</a></li>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Kullanım Şartları</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <p><i class="fas fa-envelope"></i> merhaba@ecoplanner.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ecoPlanner. Tüm hakları saklıdır.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html> 

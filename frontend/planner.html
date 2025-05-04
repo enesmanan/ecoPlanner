@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ecoPlanner - Günlük Planlayıcı</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* AI Danışman Redirect Stili */
+        .ai-chat-container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+        
+        .ai-chat-redirect {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .redirect-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .robot-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+            background-color: #e8f5e9;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+        }
+        
+        .redirect-content h3 {
+            margin: 15px 0;
+            color: #2c3e50;
+            font-size: 1.4rem;
+        }
+        
+        .redirect-content p {
+            color: #546e7a;
+            margin-bottom: 25px;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+        
+        .go-to-chatbot-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+        }
+        
+        .go-to-chatbot-btn:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(76, 175, 80, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>ecoPlanner</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i><span>Anasayfa</span></a></li>
+                <li class="active"><a href="planner.html"><i class="fas fa-calendar-alt"></i><span>Planlayıcı</span></a></li>
+                <li><a href="learning.html"><i class="fas fa-graduation-cap"></i><span>Öğrenme Yolu</span></a></li>
+                <li><a href="chatbot.html"><i class="fas fa-robot"></i><span>AI Danışman</span></a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i><span>Hakkımızda</span></a></li>
+            </ul>
+            <div class="nav-profile">
+                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Profil Resmi">
+                <span class="user-name">Jane Smith</span>
+                <i class="fas fa-angle-down"></i>
+                <div class="profile-dropdown">
+                    <a href="#"><i class="fas fa-user"></i> Profilim</a>
+                    <a href="#"><i class="fas fa-cog"></i> Ayarlar</a>
+                    <a href="index.html"><i class="fas fa-sign-out-alt"></i> Çıkış</a>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Günlük Planlayıcı</h1>
+                <p>Sürdürülebilirliği göz önünde bulundurarak gününü planla</p>
+            </div>
+
+            <div class="planner-container">
+                <div class="planner-left">
+                    <div class="date-selector">
+                        <button class="date-nav prev"><i class="fas fa-chevron-left"></i></button>
+                        <div class="current-date">
+                            <h2 id="current-date">Pazar, 4 Mayıs 2025</h2>
+                        </div>
+                        <button class="date-nav next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+
+                    <div class="plan-input-section">
+                        <h3>Bugünün Planı</h3>
+                        <div class="plan-input">
+                            <textarea id="plan-text" placeholder="Günlük planını buraya yaz..."></textarea>
+                            <button id="submit-plan" class="submit-plan-btn">
+                                <i class="fas fa-paper-plane"></i> Gönder
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="saved-plans">
+                        <h3>Planlarım</h3>
+                        <div class="plan-list">
+                            <div class="plan-item">
+                                <div class="plan-time">07:00</div>
+                                <div class="plan-details">
+                                    <h4>Sabah Yogası</h4>
+                                    <p>Parkta 30 dakikalık açık hava yogası</p>
+                                </div>
+                                <div class="plan-actions">
+                                    <button class="edit-plan"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-plan"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="plan-item">
+                                <div class="plan-time">09:00</div>
+                                <div class="plan-details">
+                                    <h4>Evden Çalışma</h4>
+                                    <p>Çevrimiçi toplantılar ve proje çalışması</p>
+                                </div>
+                                <div class="plan-actions">
+                                    <button class="edit-plan"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-plan"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="plan-item">
+                                <div class="plan-time">13:00</div>
+                                <div class="plan-details">
+                                    <h4>Yerel Market Alışverişi</h4>
+                                    <p>Çiftçi pazarından organik sebze ve meyve al</p>
+                                </div>
+                                <div class="plan-actions">
+                                    <button class="edit-plan"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-plan"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="plan-item">
+                                <div class="plan-time">19:00</div>
+                                <div class="plan-details">
+                                    <h4>Çevre Dostu Akşam Yemeği</h4>
+                                    <p>Yerel ürünleri kullanarak bitkisel tabanlı yemek pişir</p>
+                                </div>
+                                <div class="plan-actions">
+                                    <button class="edit-plan"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-plan"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="planner-right">
+                    <div class="ai-chat-container">
+                        <div class="chat-header">
+                            <div class="chat-title">
+                                <i class="fas fa-robot"></i>
+                                <h3>EcoAssistant</h3>
+                            </div>
+                            <span class="chat-status online">Çevrimiçi</span>
+                        </div>
+                        <div class="ai-chat-redirect">
+                            <div class="redirect-content">
+                                <i class="fas fa-robot robot-icon"></i>
+                                <h3>Sürdürülebilirlik Danışmanına Hoş Geldiniz!</h3>
+                                <p>Hayatınızla ilgili bilgi paylaşın, görsel yükleyin ve kişiselleştirilmiş sürdürülebilirlik önerileri alın.</p>
+                                <a href="chatbot.html" class="go-to-chatbot-btn">
+                                    <i class="fas fa-arrow-right"></i> AI Danışman'a Git
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="eco-suggestions">
+                        <h3>Önerilen Eko-Aktiviteler</h3>
+                        <div class="suggestion-list">
+                            <div class="suggestion-item">
+                                <div class="suggestion-icon"><i class="fas fa-bicycle"></i></div>
+                                <div class="suggestion-content">
+                                    <h4>İşe Bisikletle Git</h4>
+                                    <p>İşe bisikletle giderek karbon ayak izini azalt</p>
+                                </div>
+                                <button class="add-to-plan">Ekle</button>
+                            </div>
+                            <div class="suggestion-item">
+                                <div class="suggestion-icon"><i class="fas fa-seedling"></i></div>
+                                <div class="suggestion-content">
+                                    <h4>Bitki Yetiştir</h4>
+                                    <p>Evde kendi küçük bitki bahçeni oluştur</p>
+                                </div>
+                                <button class="add-to-plan">Ekle</button>
+                            </div>
+                            <div class="suggestion-item">
+                                <div class="suggestion-icon"><i class="fas fa-power-off"></i></div>
+                                <div class="suggestion-content">
+                                    <h4>Enerji Saati</h4>
+                                    <p>Elektronik cihazlar olmadan bir saat geçir</p>
+                                </div>
+                                <button class="add-to-plan">Ekle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ecoPlanner Hakkında</h3>
+                    <p>Sürdürülebilir yaşam için kişisel rehberiniz, her gün çevre dostu seçimler yapmanıza yardımcı olur.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Linkler</h3>
+                    <ul>
+                        <li><a href="about.html">Hakkımızda</a></li>
+                        <li><a href="#">Yardım & Destek</a></li>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Kullanım Şartları</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <p><i class="fas fa-envelope"></i> merhaba@ecoplanner.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ecoPlanner. Tüm hakları saklıdır.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/planner.js"></script>
+</body>
+</html>

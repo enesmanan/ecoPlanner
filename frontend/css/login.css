@@ -1,0 +1,193 @@
+/* Login Page Styles */
+.login-body {
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: white;
+}
+
+.login-left {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.15;
+}
+
+.login-content {
+    position: relative;
+    z-index: 10;
+}
+
+.login-left h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.login-left h1 i {
+    margin-right: 0.8rem;
+}
+
+.login-left p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.login-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+}
+
+.feature i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.login-right {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form-container h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.login-form-container > p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--light-color);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 0.5rem;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.signup-link {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .login-left, .login-right {
+        width: 100%;
+    }
+    
+    .login-left {
+        padding: 2rem;
+        min-height: 250px;
+    }
+    
+    .login-right {
+        padding: 2rem;
+    }
+    
+    .login-left h1 {
+        font-size: 2rem;
+    }
+    
+    .login-features {
+        display: none;
+    }
+}

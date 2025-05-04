@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ecoPlanner - Panel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>ecoPlanner</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="dashboard.html"><i class="fas fa-home"></i><span>Anasayfa</span></a></li>
+                <li><a href="planner.html"><i class="fas fa-calendar-alt"></i><span>Planlayıcı</span></a></li>
+                <li><a href="learning.html"><i class="fas fa-graduation-cap"></i><span>Öğrenme Yolu</span></a></li>
+                <li><a href="chatbot.html"><i class="fas fa-robot"></i><span>AI Danışman</span></a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i><span>Hakkımızda</span></a></li>
+            </ul>
+            <div class="nav-profile">
+                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Profil Resmi">
+                <span class="user-name">Jane Smith</span>
+                <i class="fas fa-angle-down"></i>
+                <div class="profile-dropdown">
+                    <a href="#"><i class="fas fa-user"></i> Profilim</a>
+                    <a href="#"><i class="fas fa-cog"></i> Ayarlar</a>
+                    <a href="index.html"><i class="fas fa-sign-out-alt"></i> Çıkış</a>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="welcome-banner">
+                <div class="welcome-text">
+                    <h1>Tekrar hoş geldin, Jane!</h1>
+                    <p>İşte bugün için sürdürülebilirlik genel bakışın</p>
+                </div>
+                <div class="eco-score">
+                    <div class="score-circle">
+                        <svg height="100" width="100">
+                            <circle cx="50" cy="50" r="40" stroke="#e0e0e0" stroke-width="6" fill="none" />
+                            <circle cx="50" cy="50" r="40" stroke="#4CAF50" stroke-width="6" fill="none" 
+                                stroke-dasharray="251" stroke-dashoffset="50" transform="rotate(-90 50 50)" />
+                        </svg>
+                        <span class="score-value">82</span>
+                    </div>
+                    <div class="score-label">Eko Puan</div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Today's Plan Summary -->
+                <div class="dashboard-card today-plan">
+                    <div class="card-header">
+                        <h2><i class="fas fa-tasks"></i> Bugünün Planı</h2>
+                        <a href="planner.html" class="view-all">Tümünü Görüntüle</a>
+                    </div>
+                    <div class="plan-items">
+                        <div class="plan-item completed">
+                            <div class="check-circle"><i class="fas fa-check"></i></div>
+                            <div class="plan-content">
+                                <h3>Sabah egzersizi</h3>
+                                <p>30 dakika açık hava yogası</p>
+                            </div>
+                        </div>
+                        <div class="plan-item">
+                            <div class="check-circle"></div>
+                            <div class="plan-content">
+                                <h3>Market alışverişi</h3>
+                                <p>Yerel, organik ürünler al</p>
+                            </div>
+                        </div>
+                        <div class="plan-item">
+                            <div class="check-circle"></div>
+                            <div class="plan-content">
+                                <h3>Uzaktan çalış</h3>
+                                <p>Seyahat emisyonlarını azalt</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="planner.html" class="add-plan-btn">
+                        <i class="fas fa-plus"></i> Bugünün Planına Ekle
+                    </a>
+                </div>
+
+                <!-- Weekly Progress -->
+                <div class="dashboard-card weekly-progress">
+                    <div class="card-header">
+                        <h2><i class="fas fa-chart-line"></i> Haftalık İlerleme</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- My Badges -->
+                <div class="dashboard-card badges">
+                    <div class="card-header">
+                        <h2><i class="fas fa-medal"></i> Rozetlerim</h2>
+                        <a href="#" class="view-all">Tümünü Görüntüle</a>
+                    </div>
+                    <div class="badge-grid">
+                        <div class="badge-item earned">
+                            <div class="badge-icon"><i class="fas fa-calendar-check"></i></div>
+                            <div class="badge-info">
+                                <h3>3 Gün Seri</h3>
+                                <p>3 gün üst üste planları tamamladın</p>
+                            </div>
+                        </div>
+                        <div class="badge-item earned">
+                            <div class="badge-icon"><i class="fas fa-tint"></i></div>
+                            <div class="badge-info">
+                                <h3>Su Takipçisi</h3>
+                                <p>7 gün boyunca su tüketimini takip ettin</p>
+                            </div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="badge-icon"><i class="fas fa-battery-half"></i></div>
+                            <div class="badge-info">
+                                <h3>Enerji Tasarrufu</h3>
+                                <p>Enerji tüketimini %10 azalttın</p>
+                            </div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="badge-icon"><i class="fas fa-recycle"></i></div>
+                            <div class="badge-info">
+                                <h3>Geri Dönüşüm Kahramanı</h3>
+                                <p>14 gün boyunca düzgün geri dönüşüm yaptın</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Suggestions -->
+                <div class="dashboard-card ai-suggestions">
+                    <div class="card-header">
+                        <h2><i class="fas fa-lightbulb"></i> Eko İpuçları</h2>
+                    </div>
+                    <div class="suggestion-list">
+                        <div class="suggestion-item">
+                            <div class="suggestion-icon"><i class="fas fa-sun"></i></div>
+                            <div class="suggestion-content">
+                                <h3>Dışarıda Çalış</h3>
+                                <p>Bugün dışarıda çalışmak, enerji tüketimini azaltırken ruh halini iyileştirebilir.</p>
+                            </div>
+                        </div>
+                        <div class="suggestion-item">
+                            <div class="suggestion-icon"><i class="fas fa-bicycle"></i></div>
+                            <div class="suggestion-content">
+                                <h3>Eko Ulaşım</h3>
+                                <p>Bugün markete bisikletle giderek karbon emisyonunu azaltabilirsin.</p>
+                            </div>
+                        </div>
+                        <div class="suggestion-item">
+                            <div class="suggestion-icon"><i class="fas fa-utensils"></i></div>
+                            <div class="suggestion-content">
+                                <h3>Yemek Planlaması</h3>
+                                <p>Haftalık yemeklerini planla, gıda israfını ve gereksiz seyahatleri azalt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Notes -->
+                <div class="dashboard-card notes">
+                    <div class="card-header">
+                        <h2><i class="fas fa-sticky-note"></i> Notlarım</h2>
+                    </div>
+                    <div class="notes-content">
+                        <textarea id="user-notes" placeholder="Sürdürülebilirlik notlarını buraya yaz...">Harika bir yerel çiftçi pazarı buldum, organik ürünler satıyor. Bir dahaki sefere tekrar kullanılabilir çantaları götürmeyi unutma.</textarea>
+                        <button id="save-notes" class="save-notes-btn">Notları Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ecoPlanner Hakkında</h3>
+                    <p>Sürdürülebilir yaşam için kişisel rehberiniz, her gün çevre dostu seçimler yapmanıza yardımcı olur.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Linkler</h3>
+                    <ul>
+                        <li><a href="about.html">Hakkımızda</a></li>
+                        <li><a href="#">Yardım & Destek</a></li>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Kullanım Şartları</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <p><i class="fas fa-envelope"></i> merhaba@ecoplanner.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ecoPlanner. Tüm hakları saklıdır.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>

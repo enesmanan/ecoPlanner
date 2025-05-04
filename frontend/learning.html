@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ecoPlanner - Öğrenme Yolu</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>ecoPlanner</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i><span>Anasayfa</span></a></li>
+                <li><a href="planner.html"><i class="fas fa-calendar-alt"></i><span>Planlayıcı</span></a></li>
+                <li class="active"><a href="learning.html"><i class="fas fa-graduation-cap"></i><span>Öğrenme Yolu</span></a></li>
+                <li><a href="chatbot.html"><i class="fas fa-robot"></i><span>AI Danışman</span></a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i><span>Hakkımızda</span></a></li>
+            </ul>
+            <div class="nav-profile">
+                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Profil Resmi">
+                <span class="user-name">Jane Smith</span>
+                <i class="fas fa-angle-down"></i>
+                <div class="profile-dropdown">
+                    <a href="#"><i class="fas fa-user"></i> Profilim</a>
+                    <a href="#"><i class="fas fa-cog"></i> Ayarlar</a>
+                    <a href="index.html"><i class="fas fa-sign-out-alt"></i> Çıkış</a>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Öğrenme Yolu</h1>
+                <p>Sürdürülebilirlik yolculuğunuz için kişiselleştirilmiş rehberlik</p>
+            </div>
+
+            <div class="learning-path-container">
+                <div class="learning-progress">
+                    <div class="progress-header">
+                        <h3>İlerlemeniz</h3>
+                        <div class="progress-stats">
+                            <div class="stat">
+                                <span class="stat-value">42%</span>
+                                <span class="stat-label">Tamamlandı</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">7</span>
+                                <span class="stat-label">Konu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-filled" style="width: 42%"></div>
+                    </div>
+                </div>
+
+                <div class="learning-categories">
+                    <div class="category-tabs">
+                        <button class="tab-btn active" data-category="all">Tüm Konular</button>
+                        <button class="tab-btn" data-category="energy">Enerji</button>
+                        <button class="tab-btn" data-category="water">Su</button>
+                        <button class="tab-btn" data-category="waste">Atık</button>
+                        <button class="tab-btn" data-category="food">Gıda</button>
+                        <button class="tab-btn" data-category="transport">Ulaşım</button>
+                    </div>
+                </div>
+
+                <div class="learning-courses">
+                    <div class="course-card completed">
+                        <div class="course-image">
+                            <img src="https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg" alt="Enerji Temelleri">
+                            <div class="course-badge">
+                                <i class="fas fa-check-circle"></i> Tamamlandı
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category energy">Enerji</div>
+                            <h3>Enerji Temelleri</h3>
+                            <p>Evde enerji tasarrufunun temellerini öğrenin.</p>
+                            <div class="course-meta">
+                                <span><i class="fas fa-clock"></i> 30 dk</span>
+                                <span><i class="fas fa-star"></i> 4.8 (124)</span>
+                            </div>
+                            <button class="course-btn">İncele</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card in-progress">
+                        <div class="course-image">
+                            <img src="https://images.pexels.com/photos/2449543/pexels-photo-2449543.jpeg" alt="Su Tasarrufu">
+                            <div class="course-badge">
+                                <i class="fas fa-spinner"></i> Devam Ediyor
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category water">Su</div>
+                            <h3>Su Tasarrufu</h3>
+                            <p>Su kullanımını azaltma ve israfı önleme stratejileri.</p>
+                            <div class="course-progress">
+                                <div class="progress-label">
+                                    <span>İlerleme: 60%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-filled" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <button class="course-btn">Devam Et</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="https://images.pexels.com/photos/4439387/pexels-photo-4439387.jpeg" alt="Sıfır Atık Yaşam">
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category waste">Atık</div>
+                            <h3>Sıfır Atık Yaşam</h3>
+                            <p>Ev atıklarınızı azaltmak için pratik adımlar.</p>
+                            <div class="course-meta">
+                                <span><i class="fas fa-clock"></i> 45 dk</span>
+                                <span><i class="fas fa-star"></i> 4.9 (210)</span>
+                            </div>
+                            <button class="course-btn">Başla</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="https://images.pexels.com/photos/1660027/pexels-photo-1660027.jpeg" alt="Sürdürülebilir Beslenme">
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category food">Gıda</div>
+                            <h3>Sürdürülebilir Beslenme</h3>
+                            <p>Çevre dostu gıda seçimleri rehberi.</p>
+                            <div class="course-meta">
+                                <span><i class="fas fa-clock"></i> 60 dk</span>
+                                <span><i class="fas fa-star"></i> 4.7 (156)</span>
+                            </div>
+                            <button class="course-btn">Başla</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="https://images.pexels.com/photos/3943882/pexels-photo-3943882.jpeg" alt="Çevre Dostu Ulaşım">
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category transport">Ulaşım</div>
+                            <h3>Çevre Dostu Ulaşım</h3>
+                            <p>Seyahat ederken karbon ayak izinizi azaltma.</p>
+                            <div class="course-meta">
+                                <span><i class="fas fa-clock"></i> 40 dk</span>
+                                <span><i class="fas fa-star"></i> 4.6 (98)</span>
+                            </div>
+                            <button class="course-btn">Başla</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg" alt="Yeşil Ev">
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category energy">Enerji</div>
+                            <h3>Yeşil Ev</h3>
+                            <p>Yaşam alanınızı daha çevre dostu hale getirme.</p>
+                            <div class="course-meta">
+                                <span><i class="fas fa-clock"></i> 50 dk</span>
+                                <span><i class="fas fa-star"></i> 4.8 (134)</span>
+                            </div>
+                            <button class="course-btn">Başla</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommended-path">
+                    <h3>Kişisel Öğrenme Yolunuz</h3>
+                    <p>İlgi alanlarınıza ve alışkanlıklarınıza göre, şu kursları öneriyoruz:</p>
+                    
+                    <div class="path-steps">
+                        <div class="path-step completed">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Enerji Temelleri</h4>
+                                <p>10 Ocak 2025 tarihinde tamamlandı</p>
+                            </div>
+                        </div>
+                        <div class="path-step current">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Su Tasarrufu</h4>
+                                <p>Devam ediyor - %60 tamamlandı</p>
+                            </div>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Sıfır Atık Yaşam</h4>
+                                <p>Sonraki başlangıç</p>
+                            </div>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Sürdürülebilir Beslenme</h4>
+                                <p>Önerilen</p>
+                            </div>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Çevre Dostu Ulaşım</h4>
+                                <p>Önerilen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ecoPlanner Hakkında</h3>
+                    <p>Sürdürülebilir yaşam için kişisel rehberiniz, her gün çevre dostu seçimler yapmanıza yardımcı olur.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Linkler</h3>
+                    <ul>
+                        <li><a href="about.html">Hakkımızda</a></li>
+                        <li><a href="#">Yardım & Destek</a></li>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Kullanım Şartları</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <p><i class="fas fa-envelope"></i> merhaba@ecoplanner.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ecoPlanner. Tüm hakları saklıdır.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/learning.js"></script>
+</body>
+</html>
