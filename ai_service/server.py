@@ -16,7 +16,14 @@ load_dotenv()
 
 # Create Flask app
 app = Flask(__name__, static_folder="../frontend", static_url_path="")
-CORS(app, resources={r"/api/*": {"origins": "*"}})  # Enable CORS for all API routes
+
+# Configure CORS - localde ve deploy ortamında farklı kaynaklara izin ver
+if os.environ.get('ENV') == 'production':
+    # Production ortamında sadece belirli kaynaklara izin ver veya aynı origin kullan
+    CORS(app, resources={r"/api/*": {"origins": os.environ.get('FRONTEND_URL', '*')}})
+else:
+    # Geliştirme ortamında tüm kaynaklara izin ver
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Initialize chatbot instances for each session
 chatbot_sessions = {}
@@ -85,6 +92,12 @@ def reset_chat():
     
     return jsonify({'status': 'success'})
 
+# Health check için endpoint - Render deployment için önemli
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    """Basic health check endpoint for Render."""
+    return jsonify({'status': 'healthy', 'service': 'ekoplanner-api'}), 200
+
 # Frontend Routes
 @app.route('/', defaults={'path': 'index.html'})
 @app.route('/<path:path>')
@@ -101,5 +114,8 @@ if __name__ == '__main__':
     # Get port from environment variable or use 5000 as default
     port = int(os.environ.get('PORT', 5000))
     
-    # Run the app with debug mode enabled
-    app.run(host='0.0.0.0', port=port, debug=True) 
+    # Set debug mode based on environment
+    debug = os.environ.get('ENV', 'development') == 'development'
+    
+    # Run the app
+    app.run(host='0.0.0.0', port=port, debug=debug) 

@@ -6,11 +6,7 @@ This file starts the Flask server for the ecoPlanner AI service.
 import os
 from server import app
 
-# Sağlık kontrolü için basit bir endpoint ekliyoruz
-@app.route('/api/health', methods=['GET'])
-def health_check():
-    """Basic health check endpoint for monitoring."""
-    return {'status': 'healthy', 'service': 'ekoplanner-api'}, 200
+# Not: Health check endpointi server.py'de tanımlandı
 
 if __name__ == '__main__':
     # Get port from environment variable or use 5000 as default

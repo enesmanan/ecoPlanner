@@ -11,10 +11,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Track if we have an image ready to send
     let currentUploadedImage = null;
     
-    // API endpoint
-    //const API_URL = 'http://localhost:5000/api/chat';
-    const API_URL = 'http://0.0.0.0:10000/api/chat';
-
+    // API endpoint - dinamik olarak belirlenecek
+    // Local için localhost:5000, production için göreceli yol kullanılacak 
+    const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+    const API_URL = isProduction 
+                  ? '/api/chat'  // Production ortamında göreceli URL kullan
+                  : 'http://localhost:5000/api/chat'; // Local geliştirme ortamı
+    
+    console.log('Chatbot API URL:', API_URL);
     
     // Initialize textarea auto-resize
     userInput.addEventListener('input', function() {
