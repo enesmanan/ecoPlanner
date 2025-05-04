@@ -1,0 +1,47 @@
+services:
+  # Frontend servis yapılandırması
+  - type: web
+    name: ekoplanner-frontend
+    env: static
+    buildCommand: |
+      cd frontend
+      # Eğer NPM kullanılıyorsa aşağıdaki satırı etkinleştirin
+      npm install && npm run build
+    staticPublishPath: ./frontend
+    # HTTPS yönlendirmesi
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: API_URL
+        value: https://ekoplanner-api.onrender.com/api
+      - key: NODE_VERSION
+        value: 16.15.0
+
+  # AI API servis yapılandırması
+  - type: web
+    name: ekoplanner-api
+    env: python
+    region: Oregon  # Avrupa bölgesi için, isteğe bağlı değiştirilebilir
+    buildCommand: |
+      cd ai_service
+      pip install -r requirements.txt
+    startCommand: cd ai_service && python app.py
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.4
+      - key: ENV
+        value: production
+      # AI servis anahtarları için gizli değişkenler
+      - key: AI_MODEL_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+
+# Veritabanı servisi (isteğe bağlı)
+# databases:
+#   - name: ekoplanner-db
+#     plan: free
+#     type: redis 
