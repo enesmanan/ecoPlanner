@@ -1,0 +1,3 @@
+@echo off
+echo Starting sustainability chatbot server...
+python server.py 
