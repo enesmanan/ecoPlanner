@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="plan-time">${plan.time}</div>
             <div class="plan-details">
                 <h4>${plan.text.split('\n')[0]}</h4>
-                <p>${plan.text.split('\n').slice(1).join('\n') || 'No additional details'}</p>
+                <p>${plan.text.split('\n').slice(1).join('\n') || 'Detay yok'}</p>
             </div>
             <div class="plan-actions">
                 <button class="edit-plan"><i class="fas fa-edit"></i></button>
@@ -133,13 +133,13 @@ document.addEventListener('DOMContentLoaded', function() {
             planText.value = plan.text;
             
             // Change submit button to update
-            planForm.innerHTML = '<i class="fas fa-save"></i> Update';
+            planForm.innerHTML = '<i class="fas fa-save"></i> Güncelle';
             planForm.dataset.editing = id;
             
             // Add cancel button
             const cancelBtn = document.createElement('button');
             cancelBtn.className = 'cancel-edit-btn';
-            cancelBtn.innerHTML = '<i class="fas fa-times"></i> Cancel';
+            cancelBtn.innerHTML = '<i class="fas fa-times"></i> Kapat';
             cancelBtn.style.marginRight = '10px';
             cancelBtn.style.backgroundColor = 'var(--error-color)';
             
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 resetForm();
                 
                 // Show success message
-                showNotification('Plan updated successfully!');
+                showNotification('Plan başarıyla güncellendi!');
             };
             
             // Store original listener to restore later
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         planText.value = '';
         
         // Restore submit button
-        planForm.innerHTML = '<i class="fas fa-paper-plane"></i> Submit';
+        planForm.innerHTML = '<i class="fas fa-paper-plane"></i> Gönder';
         delete planForm.dataset.editing;
         
         // Remove cancel button if it exists
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Delete plan
     function deletePlan(id) {
-        if (confirm('Are you sure you want to delete this plan?')) {
+        if (confirm('Bu planı silmek istediğinize emin misiniz?')) {
             const plans = getPlans();
             const updatedPlans = plans.filter(p => p.id != id);
             
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loadPlans(currentDate);
             
             // Show success message
-            showNotification('Plan deleted successfully!');
+            showNotification('Plan başarıyla silindi!');
         }
     }
     
