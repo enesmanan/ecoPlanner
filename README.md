@@ -137,5 +137,5 @@ ekoplanner/
 - Enes Fehmi Manan - [LinkedIn](https://www.linkedin.com/in/enesfehmimanan/)
 - Furkan Demirci - [LinkedIn](https://www.linkedin.com/in/furkan-demirci-x/)
 - Ebrar Ağralı - [LinkedIn](https://www.linkedin.com/in/ebrara%C4%9Fral%C4%B1/)
-- Team Member 4 - [LinkedIn](https://linkedin.com/in/teammember4)
+- Eylül Medine Kamar - [LinkedIn](https://www.linkedin.com/in/eylül-medine-kamar-810295261)
 - Team Member 5 - [LinkedIn](https://linkedin.com/in/teammember5)
