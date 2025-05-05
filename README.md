@@ -135,7 +135,7 @@ ekoplanner/
 ## Team
 
 - Enes Fehmi Manan - [LinkedIn](https://www.linkedin.com/in/enesfehmimanan/)
-- Team Member 2 - [LinkedIn](https://linkedin.com/in/teammember2)
+- Furkan Demirci - [LinkedIn](https://www.linkedin.com/in/furkan-demirci-x/)
 - Team Member 3 - [LinkedIn](https://linkedin.com/in/teammember3)
 - Team Member 4 - [LinkedIn](https://linkedin.com/in/teammember4)
 - Team Member 5 - [LinkedIn](https://linkedin.com/in/teammember5)
