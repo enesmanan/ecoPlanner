@@ -1,8 +1,8 @@
 /* Chatbot Page Styles */
 .chatbot-container {
     background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     height: calc(100vh - 240px);
     min-height: 550px;
@@ -11,6 +11,21 @@
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Tam boy chat container için yeni stiller */
+.fullheight-chat {
+    height: calc(100vh - 140px);
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Ana içerik alanı için tam yükseklik stili */
+.main-content-fullheight {
+    padding: 0;
+    margin: 0;
 }
 
 /* Chat main area styles */
@@ -27,15 +42,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px;
+    padding: 16px 24px;
     border-bottom: 1px solid #e9ecef;
-    background-color: #f1f8e9;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
 }
 
 .chat-header h3 {
     margin: 0;
-    color: #2c3e50;
-    font-size: 1.5rem;
+    color: white;
+    font-size: 1.4rem;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -43,8 +59,8 @@
 }
 
 .new-chat-btn {
-    padding: 10px 16px;
-    background-color: #4CAF50;
+    padding: 8px 14px;
+    background-color: rgba(255, 255, 255, 0.2);
     color: white;
     border: none;
     border-radius: 8px;
@@ -56,12 +72,13 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+    backdrop-filter: blur(5px);
 }
 
 .new-chat-btn:hover {
-    background-color: #388e3c;
+    background-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .new-chat-btn:active {
@@ -77,6 +94,7 @@
     display: flex;
     flex-direction: column;
     scroll-behavior: smooth;
+    background-color: #f8f9fa;
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
         url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234caf50' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
@@ -93,12 +111,14 @@
     justify-content: center;
     padding: 10px 20px;
     position: relative;
+    background-color: #f1f8e9;
+    border-top: 1px solid #e8f5e9;
 }
 
 .upload-preview img {
     max-width: 300px;
     max-height: 180px;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -157,12 +177,12 @@
 }
 
 .user-message .message-avatar {
-    background-color: #4CAF50;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
     color: white;
 }
 
 .bot-message .message-avatar {
-    background-color: #2196F3;
+    background: linear-gradient(135deg, #2196F3, #0D47A1);
     color: white;
 }
 
@@ -174,7 +194,7 @@
     padding: 16px 20px;
     border-radius: 18px;
     line-height: 1.6;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
     position: relative;
 }
 
@@ -214,6 +234,75 @@
     margin: 0;
     color: #37474f;
     font-size: 1.05rem;
+}
+
+/* Markdown içeriği için stiller */
+.message-content .markdown-content {
+    width: 100%;
+}
+
+.message-content .markdown-content h1,
+.message-content .markdown-content h2,
+.message-content .markdown-content h3,
+.message-content .markdown-content h4,
+.message-content .markdown-content h5,
+.message-content .markdown-content h6 {
+    color: #2E7D32;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.message-content .markdown-content a {
+    color: #1976D2;
+    text-decoration: none;
+}
+
+.message-content .markdown-content a:hover {
+    text-decoration: underline;
+}
+
+.message-content .markdown-content pre,
+.message-content .markdown-content code {
+    background-color: #f5f5f5;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+.message-content .markdown-content pre {
+    padding: 10px;
+    overflow-x: auto;
+    border-left: 3px solid #4CAF50;
+}
+
+.message-content .markdown-content blockquote {
+    border-left: 4px solid #4CAF50;
+    margin-left: 0;
+    padding-left: 10px;
+    color: #616161;
+}
+
+.message-content .markdown-content ul,
+.message-content .markdown-content ol {
+    padding-left: 20px;
+}
+
+.message-content .markdown-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.message-content .markdown-content th,
+.message-content .markdown-content td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.message-content .markdown-content th {
+    background-color: #f1f8e9;
 }
 
 .message img {
@@ -264,10 +353,11 @@
 }
 
 .chat-input {
-    padding: 25px 30px;
+    padding: 20px;
     border-top: 1px solid #e9ecef;
     background-color: #f8f9fa;
     position: relative;
+    width: 100%;
 }
 
 .chat-input::before {
@@ -289,7 +379,6 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     transition: all 0.3s;
     width: 100%;
-    max-width: 900px;
     margin: 0 auto;
 }
 

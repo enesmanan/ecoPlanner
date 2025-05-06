@@ -19,6 +19,35 @@ document.addEventListener('DOMContentLoaded', function() {
                   : 'http://localhost:5000/api/chat'; // Local geliştirme ortamı
     
     console.log('Chatbot API URL:', API_URL);
+
+    // Markdown işleyici için marked.js yükleyin (CDN üzerinden)
+    if (!window.marked) {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+        script.onload = function() {
+            console.log('Marked.js loaded successfully');
+            // Güvenli markdown ayarları
+            marked.setOptions({
+                gfm: true,
+                breaks: true,
+                sanitize: false,
+                smartLists: true,
+                smartypants: true,
+                xhtml: false
+            });
+        };
+        document.head.appendChild(script);
+    }
+
+    // DOMPurify yükle (XSS koruması için)
+    if (!window.DOMPurify) {
+        const purifyScript = document.createElement('script');
+        purifyScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js';
+        purifyScript.onload = function() {
+            console.log('DOMPurify loaded successfully');
+        };
+        document.head.appendChild(purifyScript);
+    }
     
     // Initialize textarea auto-resize
     userInput.addEventListener('input', function() {
@@ -61,6 +90,61 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         reader.readAsDataURL(file);
     });
+
+    // Sohbet geçmişini localStorage'dan yükleme
+    function loadChatHistory() {
+        const savedMessages = localStorage.getItem('ecoplannerChatHistory');
+        if (savedMessages) {
+            try {
+                const parsedMessages = JSON.parse(savedMessages);
+                
+                if (Array.isArray(parsedMessages) && parsedMessages.length > 0) {
+                    // Sohbet geçmişini temizle ve kaydedilmiş mesajları ekle
+                    chatMessages.innerHTML = '';
+                    
+                    parsedMessages.forEach(msg => {
+                        addMessage(msg.message, msg.sender, msg.imageUrl, false);
+                    });
+                    
+                    // Sohbet alanını en aşağıya kaydır
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    return true;
+                }
+            } catch (error) {
+                console.error('Sohbet geçmişi yüklenirken hata:', error);
+            }
+        }
+        
+        // Sohbet geçmişi yoksa veya geçersizse hoşgeldin mesajını göster
+        addWelcomeMessage();
+        return false;
+    }
+    
+    // Sohbet geçmişini localStorage'a kaydetme
+    function saveChatHistory() {
+        const messages = Array.from(chatMessages.querySelectorAll('.message')).map(el => {
+            const sender = el.classList.contains('user-message') ? 'user' : 'bot';
+            const messageContent = el.querySelector('.message-content p')?.innerHTML || 
+                                  el.querySelector('.message-content .markdown-content')?.innerHTML || '';
+            const imageElement = el.querySelector('.message-content img');
+            const imageUrl = imageElement ? imageElement.src : null;
+            
+            return {
+                sender,
+                message: messageContent,
+                imageUrl,
+                timestamp: new Date().toISOString()
+            };
+        });
+        
+        localStorage.setItem('ecoplannerChatHistory', JSON.stringify(messages));
+    }
+    
+    // Hoşgeldin mesajını ekle
+    function addWelcomeMessage() {
+        chatMessages.innerHTML = '';
+        addMessage('Merhaba! Ben ecoPlanner AI asistanınızım. Size nasıl yardımcı olabilirim? Sürdürülebilir yaşam, çevre dostu alışkanlıklar veya projeleriniz hakkında sorularınızı yanıtlayabilirim. Ayrıca görsel yükleyerek de analiz yapabilirim.', 'bot');
+    }
     
     // Send a message to the chatbot
     async function sendMessage(message, imageFile = null) {
@@ -130,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add a message to the chat UI
-    function addMessage(message, sender, imageUrl = null) {
+    function addMessage(message, sender, imageUrl = null, shouldSave = true) {
         const messageElement = document.createElement('div');
         messageElement.className = `message ${sender}-message`;
         
@@ -148,9 +232,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const contentElement = document.createElement('div');
         contentElement.className = 'message-content';
         
-        // Format message with new lines
-        const formattedMessage = message.replace(/\n/g, '<br>');
-        contentElement.innerHTML = `<p>${formattedMessage}</p>`;
+        // Parse markdown if it's a bot message and window.marked is available
+        let formattedMessage = '';
+        if (sender === 'bot' && window.marked && window.DOMPurify) {
+            // Bot mesajı için markdown işle
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'markdown-content';
+            // Önce marked ile markdown'ı HTML'e dönüştür, sonra XSS koruması için DOMPurify ile temizle
+            messageDiv.innerHTML = DOMPurify.sanitize(marked.parse(message));
+            contentElement.appendChild(messageDiv);
+        } else {
+            // Format message with new lines for user messages or if marked is not available
+            formattedMessage = message.replace(/\n/g, '<br>');
+            contentElement.innerHTML = `<p>${formattedMessage}</p>`;
+        }
         
         // Add image if present
         if (imageUrl) {
@@ -175,6 +270,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        // Eklendiğinde sohbet geçmişini kaydet
+        if (shouldSave) {
+            saveChatHistory();
+        }
     }
     
     // Handle form submission
@@ -212,12 +312,15 @@ document.addEventListener('DOMContentLoaded', function() {
             chatMessages.innerHTML = '';
             
             // Add welcome message
-            addMessage('Merhaba! Ben sürdürülebilirlik danışmanınızım. Bana hayatınız, alışkanlıklarınız veya ilgilendiğiniz herhangi bir konu hakkında bilgi verebilirsiniz. Size sürdürülebilir yaşam için kişiselleştirilmiş öneriler sunabilirim. Ayrıca görsel yükleyerek de analiz yaptırabilirsiniz.', 'bot');
+            addWelcomeMessage();
             
             // Clear any uploaded image
             currentUploadedImage = null;
             uploadPreview.innerHTML = '';
             imageUpload.value = '';
+            
+            // Sohbet geçmişini temizle
+            localStorage.removeItem('ecoplannerChatHistory');
             
         } catch (error) {
             console.error('Error:', error);
@@ -236,4 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
             chatForm.dispatchEvent(new Event('submit'));
         }
     });
+
+    // Sayfa yüklendiğinde sohbet geçmişini yükle
+    loadChatHistory();
 }); 

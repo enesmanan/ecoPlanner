@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/chatbot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
 </head>
 <body>
     <div class="app-container">
@@ -37,28 +38,18 @@
         </nav>
 
         <!-- Main Content -->
-        <main class="main-content">
-            <div class="page-header">
-                <h1>Sürdürülebilirlik Danışmanı</h1>
-            </div>
-
-            <div class="chatbot-container">
+        <main class="main-content main-content-fullheight">
+            <div class="chatbot-container fullheight-chat">
                 <div class="chat-main">
                     <div class="chat-header">
                         <h3><i class="fas fa-robot"></i> AI Danışman</h3>
-                        <button id="new-chat" class="new-chat-btn"><i class="fas fa-plus"></i> Yeni Sohbet</button>
+                        <div class="chat-controls">
+                            <button id="new-chat" class="new-chat-btn"><i class="fas fa-plus"></i> Yeni Sohbet</button>
+                        </div>
                     </div>
                     
                     <div class="chat-messages" id="chat-messages">
-                        <div class="message bot-message">
-                            <div class="message-avatar">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <div class="message-content">
-                                <p>Merhaba! Ben sürdürülebilirlik danışmanınızım. Bana hayatınız, alışkanlıklarınız veya ilgilendiğiniz herhangi bir konu hakkında bilgi verebilirsiniz. Size sürdürülebilir yaşam için kişiselleştirilmiş öneriler sunabilirim. Ayrıca görsel yükleyerek de analiz yaptırabilirsiniz.</p>
-                            </div>
-                        </div>
-                        <!-- Messages will be added here dynamically -->
+                        <!-- Hoşgeldin mesajı ve diğer mesajlar, JavaScript tarafından eklenecek -->
                     </div>
                     
                     <div id="upload-preview" class="upload-preview"></div>
@@ -115,6 +106,31 @@
             </div>
         </footer>
     </div>
+    
+    <!-- Kod vurgulama için highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        // highlight.js'yi markdown içindeki kod blokları için otomatik çalıştır
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.addedNodes.length) {
+                        const codeBlocks = document.querySelectorAll('.markdown-content pre code');
+                        if (codeBlocks.length) {
+                            codeBlocks.forEach((block) => {
+                                hljs.highlightElement(block);
+                            });
+                        }
+                    }
+                });
+            });
+            
+            observer.observe(document.getElementById('chat-messages'), {
+                childList: true,
+                subtree: true
+            });
+        });
+    </script>
     
     <script src="js/main.js"></script>
     <script src="js/chatbot.js"></script>
