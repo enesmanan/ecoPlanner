@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showCourseReview(title, category) {
         const content = `
             <div class="course-review">
-                <p>You've already completed the <strong>${title}</strong> course in the <span class="category-tag" style="display: inline-block; padding: 0.3rem 0.6rem; border-radius: 2rem; font-size: 0.8rem; margin: 0.3rem 0; font-weight: 500; background-color: #C8E6C9; color: #1B5E20;">${category}</span> category.</p>
+                <p><span class="category-tag" style="display: inline-block; padding: 0.3rem 0.6rem; border-radius: 2rem; font-size: 0.8rem; margin: 0.3rem 0; font-weight: 500; background-color: #C8E6C9; color: #1B5E20;">${category}</span> kategorisindeki <strong>${title}</strong> kursunu tamamladın.</p>
                 
                 <div class="course-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
                     <div class="stat-item" style="background-color: var(--light-color); padding: 1rem; border-radius: var(--border-radius); text-align: center;">
@@ -231,27 +231,27 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 
-                <h3>What you've learned:</h3>
+                <h3>Neler Öğrendin:</h3>
                 <ul>
-                    <li>Core principles of ${category.toLowerCase()} sustainability</li>
-                    <li>Practical daily habits for eco-friendly living</li>
-                    <li>Advanced techniques for reducing environmental impact</li>
-                    <li>How to influence others in your community</li>
+                    <li>${category} sürdürülebilirliğinin temel ilkeleri.</li>
+                    <li>Çevre dostu yaşam için pratik günlük alışkanlıklar.</li>
+                    <li>Çevresel etkiyi azaltmak için gelişmiş teknikler.</li>
+                    <li>Toplumunuzdaki diğer kişileri nasıl etkileyebilirsiniz?</li>
                 </ul>
                 
-                <h3>Your achievements:</h3>
+                <h3>Başarılarınız:</h3>
                 <div style="display: flex; gap: 1rem; margin: 1rem 0;">
                     <div style="text-align: center;">
                         <div style="font-size: 1.5rem; color: var(--primary-color);"><i class="fas fa-medal"></i></div>
-                        <div style="font-size: 0.8rem;">Course Complete</div>
+                        <div style="font-size: 0.8rem;">Kurs Tamamlandı</div>
                     </div>
                     <div style="text-align: center;">
                         <div style="font-size: 1.5rem; color: var(--primary-color);"><i class="fas fa-star"></i></div>
-                        <div style="font-size: 0.8rem;">Top Performer</div>
+                        <div style="font-size: 0.8rem;">En İyi Performans</div>
                     </div>
                     <div style="text-align: center;">
                         <div style="font-size: 1.5rem; color: var(--primary-color);"><i class="fas fa-certificate"></i></div>
-                        <div style="font-size: 0.8rem;">Expert Status</div>
+                        <div style="font-size: 0.8rem;">Uzman</div>
                     </div>
                 </div>
             </div>
@@ -259,21 +259,21 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const buttons = [
             {
-                text: 'Start Again',
+                text: 'Yeniden Başla',
                 primary: true,
                 handler: function() {
                     console.log('Starting course again: ' + title);
                 }
             },
             {
-                text: 'View Certificate',
+                text: 'Sertifika Görüntüle',
                 handler: function() {
                     console.log('Viewing certificate for: ' + title);
                 }
             }
         ];
         
-        showCourseModal(title + ' - Review', content, buttons);
+        showCourseModal(title , content, buttons);
     }
     
     // Continue in-progress courses
@@ -282,39 +282,39 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const content = `
             <div class="course-continue">
-                <p>You're currently working through the <strong>${title}</strong> course in the <span class="category-tag" style="display: inline-block; padding: 0.3rem 0.6rem; border-radius: 2rem; font-size: 0.8rem; margin: 0.3rem 0; font-weight: 500; background-color: #BBDEFB; color: #0D47A1;">${category}</span> category.</p>
+                <p>Şuan <span class="category-tag" style="display: inline-block; padding: 0.3rem 0.6rem; border-radius: 2rem; font-size: 0.8rem; margin: 0.3rem 0; font-weight: 500; background-color: #BBDEFB; color: #0D47A1;">${category}</span>  kategorisindeki <strong>${title}</strong> kursuna çalışıyorsun..</p>
                 
                 <div class="progress-container" style="margin: 1.5rem 0;">
                     <div class="progress-label" style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.5rem;">
-                        <span>Progress: ${progress}%</span>
-                        <span>${Math.round(progress / 100 * 5)} of 5 modules</span>
+                        <span>İlerleme: ${progress}%</span>
+                        <span>${Math.round(progress / 100 * 5)}/5</span>
                     </div>
                     <div class="progress-bar" style="height: 10px; background-color: var(--light-color); border-radius: 5px; overflow: hidden;">
                         <div class="progress-filled" style="height: 100%; background-color: var(--primary-color); border-radius: 5px; width: ${progress}%;"></div>
                     </div>
                 </div>
                 
-                <h3>Your current module:</h3>
+                <h3>Geçerli modül:</h3>
                 <div class="current-module" style="background-color: var(--light-color); padding: 1rem; border-radius: var(--border-radius); margin-top: 0.5rem;">
-                    <h4 style="margin-top: 0;">Module ${Math.round(progress / 100 * 5)}: Advanced ${category} Techniques</h4>
-                    <p>Learn how to implement advanced sustainability techniques in your daily life.</p>
+                    <h4 style="margin-top: 0;">Modül ${Math.round(progress / 100 * 5)}: Gelişmiş ${category} Teknikleri</h4>
+                    <p>Gelişmiş sürdürülebilirlik tekniklerini günlük hayatınızda nasıl uygulayacağınızı öğrenin.</p>
                     <div style="font-size: 0.9rem; color: var(--text-light);">
-                        <span><i class="fas fa-clock"></i> 20 mins remaining</span>
+                        <span><i class="fas fa-clock"></i> 20 dakika kaldı.</span>
                     </div>
                 </div>
                 
-                <h3>Up next:</h3>
+                <h3>Sıradaki:</h3>
                 <div class="next-modules" style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
                     <div style="background-color: var(--light-color); padding: 0.8rem; border-radius: var(--border-radius); opacity: 0.7;">
-                        <h4 style="margin-top: 0; margin-bottom: 0.3rem;">Module ${Math.round(progress / 100 * 5) + 1}: Community Impact</h4>
+                        <h4 style="margin-top: 0; margin-bottom: 0.3rem;">Modül ${Math.round(progress / 100 * 5) + 1}: Toplumsal Etki</h4>
                         <div style="font-size: 0.9rem; color: var(--text-light);">
-                            <span><i class="fas fa-clock"></i> 30 mins</span>
+                            <span><i class="fas fa-clock"></i> 30 dakika</span>
                         </div>
                     </div>
                     <div style="background-color: var(--light-color); padding: 0.8rem; border-radius: var(--border-radius); opacity: 0.5;">
-                        <h4 style="margin-top: 0; margin-bottom: 0.3rem;">Module ${Math.round(progress / 100 * 5) + 2}: Global Perspectives</h4>
+                        <h4 style="margin-top: 0; margin-bottom: 0.3rem;">Modül ${Math.round(progress / 100 * 5) + 2}: Küresel Perspektifler</h4>
                         <div style="font-size: 0.9rem; color: var(--text-light);">
-                            <span><i class="fas fa-clock"></i> 25 mins</span>
+                            <span><i class="fas fa-clock"></i> 25 dakika</span>
                         </div>
                     </div>
                 </div>
@@ -323,14 +323,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const buttons = [
             {
-                text: 'Continue Learning',
+                text: 'Öğrenmeye Devam Edin',
                 primary: true,
                 handler: function() {
                     console.log('Continuing course: ' + title);
                 }
             },
             {
-                text: 'Reset Progress',
+                text: 'Yeniden Başla',
                 handler: function() {
                     if (confirm('Are you sure you want to reset your progress for this course?')) {
                         console.log('Resetting progress for: ' + title);
@@ -339,50 +339,50 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         ];
         
-        showCourseModal(title + ' - Continue Learning', content, buttons);
+        showCourseModal(title + ' - Öğrenmeye Devam Edin', content, buttons);
     }
     
     // Start new courses
     function startCourse(title, category) {
         const content = `
             <div class="course-start">
-                <p>You're about to start the <strong>${title}</strong> course in the <span class="category-tag" style="display: inline-block; padding: 0.3rem 0.6rem; border-radius: 2rem; font-size: 0.8rem; margin: 0.3rem 0; font-weight: 500; background-color: #F8BBD0; color: #880E4F;">${category}</span> category.</p>
+                <p><span class="category-tag" style="display: inline-block; padding: 0.3rem 0.6rem; border-radius: 2rem; font-size: 0.8rem; margin: 0.3rem 0; font-weight: 500; background-color: #F8BBD0; color: #880E4F;">${category}</span> kategorisindeki <strong>${title}</strong> kursuna başlayın.</p>
                 
                 <div class="course-banner" style="margin: 1.5rem 0; border-radius: var(--border-radius); overflow: hidden;">
                     <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg" alt="${title}" style="width: 100%; height: 200px; object-fit: cover;">
                 </div>
                 
-                <h3>What you'll learn:</h3>
+                <h3>Kurs Çıktısı:</h3>
                 <ul>
-                    <li>Core principles of ${category.toLowerCase()} sustainability</li>
-                    <li>Practical daily habits for eco-friendly living</li>
-                    <li>How to measure and track your impact</li>
-                    <li>Advanced techniques to reduce your environmental footprint</li>
+                    <li>${category.toLowerCase()} sürdürülebilirliğinin temel ilkeleri.</li>
+                    <li>Çevre dostu yaşam için pratik günlük alışkanlıklar.</li>
+                    <li>Etkinizi ölçme ve takip etme.</li>
+                    <li>Çevresel ayak izinizi azaltmak için gelişmiş teknikler.</li>
                 </ul>
                 
-                <h3>Course details:</h3>
+                <h3>Kurs detayları:</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0;">
                     <div style="background-color: var(--light-color); padding: 1rem; border-radius: var(--border-radius); text-align: center;">
                         <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-color);">5</div>
-                        <div style="font-size: 0.8rem; color: var(--text-light);">Modules</div>
+                        <div style="font-size: 0.8rem; color: var(--text-light);">Modüller</div>
                     </div>
                     <div style="background-color: var(--light-color); padding: 1rem; border-radius: var(--border-radius); text-align: center;">
-                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-color);">60 min</div>
-                        <div style="font-size: 0.8rem; color: var(--text-light);">Duration</div>
+                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-color);">60 dakika</div>
+                        <div style="font-size: 0.8rem; color: var(--text-light);">Süre</div>
                     </div>
                     <div style="background-color: var(--light-color); padding: 1rem; border-radius: var(--border-radius); text-align: center;">
-                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-color);">Beginner</div>
-                        <div style="font-size: 0.8rem; color: var(--text-light);">Level</div>
+                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-color);">Başlangıç</div>
+                        <div style="font-size: 0.8rem; color: var(--text-light);">Seviye</div>
                     </div>
                 </div>
                 
-                <p style="font-style: italic; color: var(--text-light);">This course will help you develop sustainable habits related to ${category.toLowerCase()} that you can incorporate into your daily routine.</p>
+                <p style="font-style: italic; color: var(--text-light);">Bu kurs, günlük yaşamınıza dahil edebileceğiniz ${category.toLowerCase()} ile ilgili sürdürülebilir alışkanlıklar geliştirmenize yardımcı olacaktır.</p>
             </div>
         `;
         
         const buttons = [
             {
-                text: 'Start Learning',
+                text: 'Öğrenmeye Başlayın',
                 primary: true,
                 handler: function() {
                     console.log('Starting course: ' + title);
@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 progressDiv.className = 'course-progress';
                                 progressDiv.innerHTML = `
                                     <div class="progress-label">
-                                        <span>Progress: 0%</span>
+                                        <span>İlerleme: %0</span>
                                     </div>
                                     <div class="progress-bar">
                                         <div class="progress-filled" style="width: 0%"></div>
@@ -442,15 +442,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             },
             {
-                text: 'Save for Later',
+                text: 'Sonrası için Kaydet',
                 handler: function() {
-                    console.log('Saving course for later: ' + title);
-                    showNotification('Course saved to your list!');
+                    console.log(title + 'Kursu daha sonrası için kaydediliyor: ');
+                    showNotification('Kurs listenize kaydedildi!');
                 }
             }
         ];
         
-        showCourseModal(title + ' - Course Overview', content, buttons);
+        showCourseModal(title + ' - Kursa Genel Bakış', content, buttons);
     }
     
     // Show notification
