@@ -4,6 +4,12 @@ ecoPlanner is a comprehensive web application designed to help users live a more
 
 **This project was created as part of the [AI and Technology Academy](https://yapayzekaveteknolojiakademisi.com/) Hackathon.**
 
+
+## Deployment & Demo Video
+
+- Deploy link: [EcoPlanner Deploy](https://ecoplanner.onrender.com/)
+- Demo video link: [EcoPlanner Demo Video](https://www.youtube.com/watch?v=xSHmsJHzTe8) 
+
 ## Technical Architecture
 
 ### 1. Frontend
@@ -120,17 +126,21 @@ ekoplanner/
 └── render.yaml             # Render.com deployment configuration
 ```
 
-## Todo Features
+### Todo
 
-- [ ] Add value proposition to the homepage "About ecoPlanner" section
-- [ ] Improve the Planner section with more logical foundation
-- [ ] Fix the ecoAssistant section in the Planner
-- [ ] Rename AI consultant to "ecoPlanner" and improve UI with symmetrical design
-- [ ] Add markdown parser support to the AI consultant UI
-- [ ] Replace "Jane Smith" profile with a Turkish name
-- [ ] Update team member profiles and photos in About section
-- [ ] Remove "Our Impact" section from About page
-- [ ] Test whether LLM language and recommendations work as expected
+<details>
+
+- [x] Add value proposition to the homepage "About ecoPlanner" section
+- [x] Improve the Planner section with more logical foundation
+- [x] Fix the ecoAssistant section in the Planner
+- [x] Rename AI consultant to "ecoPlanner" and improve UI with symmetrical design
+- [x] Add markdown parser support to the AI consultant UI
+- [x] Replace "Jane Smith" profile with a Turkish name
+- [x] Update team member profiles and photos in About section
+- [x] Remove "Our Impact" section from About page
+- [x] Test whether LLM language and recommendations work as expected
+</details>
+
 
 ## Team
 
